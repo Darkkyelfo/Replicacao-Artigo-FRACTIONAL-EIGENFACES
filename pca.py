@@ -17,8 +17,8 @@ class PCA(object):
 
         copia = np.array(copy.deepcopy(base1.atributos))
         autoVectors = self.autoVectors[0:k]
-        novosAtributos = np.dot(copia,np.array(autoVectors).T)
-        
+        #novosAtributos = np.dot(copia,np.array(autoVectors).T)
+        novosAtributos = self._projetar(copia, autoVectors)
         return (Base(base1.classes,novosAtributos))
     
     def fit(self,bTreino):
@@ -28,7 +28,10 @@ class PCA(object):
         autoVectors = autoVectors.T
         self.autoValues,self.autoVectors = zip(*sorted(zip(autoValues, autoVectors),reverse=True))
     
-        
+    
+    def _projetar(self,atributorsOri,autoVetores):
+        return np.dot(atributorsOri,np.array(autoVetores).T)
+    
 class PCA_SCORE(PCA):
     
     def fit(self,base1):
