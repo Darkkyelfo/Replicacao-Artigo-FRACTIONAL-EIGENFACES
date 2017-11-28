@@ -21,7 +21,6 @@ def imgsParaBase(caminho,dirClasse = "class_",qtClasses=15,tipoArq = "png"):
             atr = img2Dto1D(caminhoImg)
             classes.append(i-1)
             atributos.append(atr)
-    
     return Base(classes,atributos)
             
 
